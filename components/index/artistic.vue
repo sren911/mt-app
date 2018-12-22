@@ -5,28 +5,20 @@
       <dd
         :class="{active:kind==='all'}"
         kind="all"
-        keyword="景点">全部</dd>
+        keyword="酒店">全部</dd>
       <dd
         :class="{active:kind==='part'}"
         kind="part"
         keyword="美食">约会聚餐</dd>
       <dd
-        :class="{active:kind==='spa'}"
-        kind="spa"
-        keyword="丽人">丽人SPA</dd>
-      <dd
         :class="{active:kind==='movie'}"
         kind="movie"
         keyword="电影">电影演出</dd>
-      <dd
-        :class="{active:kind==='travel'}"
-        kind="travel"
-        keyword="旅游">品质出游</dd>
     </dl>
     <ul class="ibody">
       <li
-        v-for="item in cur"
-        :key="item.title">
+        v-for="(item, index) in cur"
+        :key="index">
         <el-card
           :body-style="{ padding: '0px' }"
           shadow="never">
@@ -51,9 +43,7 @@ export default {
       list: {
         all: [],
         part: [],
-        spa: [],
         movie: [],
-        travel: []
       }
     }
   },
@@ -65,24 +55,24 @@ export default {
   async mounted(){
     let self=this;
     let {status,data:{count,pois}}=await self.$axios.get('/search/resultsByKeywords',{
-      params:{
-        keyword:'景点',
+      params: {
+        keyword:'酒店',
         city:self.$store.state.geo.position.city
       }
     })
-    if(status===200&&count>0){
-      let r= pois.filter(item=>item.photos.length).map(item=>{
+    if(status === 200 && count > 0){
+      let result = pois.map(item=>{
         return {
-          title:item.name,
-          pos:item.type.split(';')[0],
-          price:item.biz_ext.cost||'暂无',
-          img:item.photos[0].url,
-          url:'//abc.com'
+          title: item.name,
+          pos: item.pos,
+          price: item.price || '暂无',
+          img: item.photoUrl || 'https://p1.meituan.net/msmerchant/9480fc7bed1f8b92f69b7f8fde219da6273275.jpg@368w_208h_1e_1c',
+          url: item.url || 'https://qd.meituan.com/'
         }
       })
-      self.list[self.kind]=r.slice(0,9)
+      self.list[self.kind] = result
     }else{
-      self.list[self.kind]=[]
+      self.list[self.kind] = []
     }
   },
   methods: {
@@ -99,19 +89,19 @@ export default {
             city:self.$store.state.geo.position.city
           }
         })
-        if(status===200&&count>0){
-          let r= pois.filter(item=>item.photos.length).map(item=>{
+        if(status === 200 && count > 0){
+          let result = pois.map(item=>{
             return {
-              title:item.name,
-              pos:item.type.split(';')[0],
-              price:item.biz_ext.cost||'暂无',
-              img:item.photos[0].url,
-              url:'//abc.com'
+              title: item.name,
+              pos: item.pos,
+              price: item.price || '暂无',
+              img: item.photoUrl || 'https://p1.meituan.net/msmerchant/9480fc7bed1f8b92f69b7f8fde219da6273275.jpg@368w_208h_1e_1c',
+              url: item.url || 'https://qd.meituan.com/'
             }
           })
-          self.list[self.kind]=r.slice(0,9)
+          self.list[self.kind] = result
         }else{
-          self.list[self.kind]=[]
+          self.list[self.kind] = []
         }
       }
     }

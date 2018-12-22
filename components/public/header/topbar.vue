@@ -8,7 +8,10 @@
     <el-col :span="5">
       <user/>
     </el-col>
-    <el-col :span="14">
+    <el-col :span="4">
+      <disclaimer />
+    </el-col>
+    <el-col :span="10">
       <navbar/>
     </el-col>
   </el-row>
@@ -18,11 +21,13 @@
 import Geo from './geo.vue'
 import User from './user.vue'
 import Navbar from './nav.vue'
+import Disclaimer from './disclaimer.vue'
 export default {
   components:{
     Geo,
     User,
-    Navbar
+    Navbar,
+    Disclaimer
   }
 }
 </script>

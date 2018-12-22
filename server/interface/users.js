@@ -96,9 +96,6 @@ router.post('/signin', async (ctx, next) => {
 router.post('/verify', async (ctx, next) => {
   let username = ctx.request.body.username
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
-  console.log(saveExpire)
-  console.log(new Date().getTime())
-  console.log(new Date().getTime() - saveExpire)
   if (saveExpire && (new Date().getTime() - saveExpire) < 0) {
     ctx.body = {
       code: -1,
@@ -122,8 +119,8 @@ router.post('/verify', async (ctx, next) => {
   let mailOptions = {
     from: `"认证邮件" <${Email.smtp.user}>`,
     to: ko.email,
-    subject: '《慕课网高仿美团网全栈实战》注册码',
-    html: `您在《慕课网高仿美团网全栈实战》课程中注册，您的邀请码是${ko.code}`
+    subject: '爱美丽网站注册码',
+    html: `您的邀请码是${ko.code}`
   }
   await transporter.sendMail(mailOptions, (error, info) => {
     if (error) {

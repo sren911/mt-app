@@ -1,7 +1,9 @@
 <template>
   <div class="page-index">
     <el-row>
-      <el-col :span="5">
+      <el-col
+        :span="5"
+        class="e-menu-wrap">
         <emenu/>
       </el-col>
       <el-col :span="19">
@@ -9,7 +11,7 @@
       </el-col>
     </el-row>
     <el-row :span="24">
-      <!-- <artistic/> -->
+      <artistic/>
     </el-row>
   </div>
 </template>
@@ -18,6 +20,7 @@
 import Emenu from '@/components/index/menu.vue'
 import Life from '@/components/index/life.vue'
 import Artistic from '@/components/index/artistic.vue'
+
 export default {
   components: {
     Emenu,
