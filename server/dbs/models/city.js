@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
-const Province = new Schema({
+const City = new Schema({
   id: {
     type: String,
     require: true
   },
   value: {
-    type: String,
+    type: Array,
     require: true
   }
 })
 
-export default mongoose.model('Province', Province)
+export default mongoose.model('City', City)

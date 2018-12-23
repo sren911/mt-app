@@ -25,15 +25,16 @@
           v-model="password"
           prefix-icon="password"
           type="password"/>
-        <div class="foot">
-          <el-checkbox v-model="checked">7天内自动登录</el-checkbox>
-          <b>忘记密码？</b>
-        </div>
         <el-button
           class="btn-login"
           type="success"
           size="mini"
           @click="login">登录</el-button>
+        <el-button
+          class="btn-register"
+          type="success"
+          size="mini"
+          @click="register">还没有证号，请先注册</el-button>
       </div>
     </div>
   </div>
@@ -68,6 +69,9 @@ export default {
           self.error=`服务器出错`
         }
       })
+    },
+    register: function () {
+      location.href = '/register'
     }
   }
 }

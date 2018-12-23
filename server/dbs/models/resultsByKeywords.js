@@ -2,40 +2,22 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 const ResultsByKeywords = new Schema({
   name: {
-    type: String // 酒店名
+    type: String // 活动名
   },
-  province: {
+  pos: {
     type: String // 属于哪种类型
   },
-  city:{
-    type:String // 属于哪座城市
+  city: {
+    type: String // 属于哪座城市
   },
-  price:{
-    type:Number // 酒店价格
+  price: {
+    type: String // 活动价格
   },
-  areaCode:{
-    type:String
+  photoUrl: {
+    type: String // 活动封面图
   },
-  tel:{
-    type:String
-  },
-  area:{
-    type:String
-  },
-  addr:{
-    type:String
-  },
-  type:{
-    type:String
-  },
-  module:{
-    type:String
-  },
-  longitude:{
-    type:Number
-  },
-  latitude:{
-    type:Number
+  url: {
+    type: String // 点击跳转链接
   }
 })
 
