@@ -74,4 +74,21 @@ router.get('/resultsByKeywords', async (ctx) => {
   }
 })
 
+router.get('/products', async (ctx) => {
+  let keyword = ctx.query.keyword || '美食'
+  let city = ctx.query.city || '三亚'
+  // ctx.body = {
+  //   // product,
+  //   product: {},
+  //   more: ctx.isAuthenticated() ? more: [],
+  //   login: ctx.isAuthenticated()
+  // }
+  ctx.body = {
+    // product,
+    product: {},
+    more: [],
+    login: false
+  }
+})
+
 export default router
