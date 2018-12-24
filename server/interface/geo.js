@@ -4,6 +4,7 @@ import Menu from '../dbs/models/menu'
 import Province from '../dbs/models/province'
 import City from '../dbs/models/city'
 import Test from '../dbs/models/test'
+import Lucy from '../dbs/models/lucy'
 
 import {
   AmapKey
@@ -77,6 +78,14 @@ router.get('/test', async (ctx) => {
   ctx.body = {
     code: 0,
     test: rest
+  }
+})
+
+router.get('/lucy', async (ctx) => {
+  let res = await Lucy.find()
+  ctx.body = {
+    code: 0,
+    data: res
   }
 })
 

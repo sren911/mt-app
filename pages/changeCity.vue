@@ -1,6 +1,6 @@
 <template>
   <div class="page-changeCity">
-    <el-row>
+    <el-row class="changeCity-row">
       <el-col :span="24">
         <iSelect/>
       </el-col>
@@ -30,5 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.changeCity-row.el-row::after {
+    border-bottom: 1px solid #fff;
+}
 </style>

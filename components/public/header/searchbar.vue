@@ -30,22 +30,28 @@
             <dt>热门搜索</dt>
             <dd
               v-for="(item, index) in $store.state.home.hotPlace.slice(0, 3)"
-              :key="index">{{ item.name }}</dd>
+              :key="index">
+              <a :href="'/products?keyword='+encodeURIComponent(item.name)">{{ item.name }}</a>
+            </dd>
           </dl>
           <dl
             v-if="isSearchList"
             class="searchList">
             <dd
               v-for="(item, index) in searchList"
-              :key="index">{{ item.name }}</dd>
+              :key="index">
+              <a :href="'/products?keyword='+encodeURIComponent(item.name)">{{ item.name }}</a>
+            </dd>
           </dl>
         </div>
-        <p class="suggset">
-          <a
+        <ul class="suggset">
+          <li
             v-for="(item, index) in $store.state.home.hotPlace.slice(0, 3)"
             :key="index"
-            href="#">{{ item.name }}</a>
-        </p>
+            href="#">
+            <a :href="'/products?keyword='+encodeURIComponent(item.name)">{{ item.name }}</a>
+          </li>
+        </ul>
         <ul class="nav">
           <li>
             <nuxt-link
@@ -133,7 +139,9 @@
 </script>
 
 <style lang="scss">
-  .suggset a{
+  .suggset li{
+    display: inline-block;
     margin-right: 10px;
+    list-style: none;
   }
 </style>
